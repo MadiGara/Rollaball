@@ -37,4 +37,14 @@ public class PlayerController : MonoBehaviour
         //force needs a V3 variable (x y and z)
         rb.AddForce(movement * speed);
     }
+
+    void OnTriggerEnter(Collider other)
+    //called when player game object first touches a trigger collider and refer to it as other
+    {
+        //checks tag - if collectable object, will deactivate game object
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
